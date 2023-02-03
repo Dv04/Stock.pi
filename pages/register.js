@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from "./../styles/register.module.scss";
 
+import googleSVG from "./../assets/download.png";
+
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword} from "firebase/auth";
 import { getFirestore, query, getDocs, collection, where, addDoc, } from "firebase/firestore";
@@ -66,8 +68,27 @@ const register = () => {
     };
   return (
     <div className={styles.register}>
-        <div className={styles.yellow}>
-        <input type="text" placeholder="Name" id="name" />
+           <div className="register">
+                <div className="box">
+                    <div className="left">
+                        <form>
+                            <h1>Create Account</h1>
+                            <div className="google-btn">
+                                <div className="google-icon-wrapper">
+                                    <img
+                                        className="google-icon"
+                                        src={googleSVG}
+                                        alt="google svg"
+                                    />
+                                </div>
+                                <p className="btn-text">
+                                    <b>Sign in with google</b>
+                                </p>
+                            </div>
+                            <span>
+                                or register your details and create account
+                            </span>
+                            <input type="text" placeholder="Name" id="name" />
                             <input
                                 type="email"
                                 placeholder="Email"
@@ -79,7 +100,36 @@ const register = () => {
                                 id="password"
                             />
                             <button onClick={registeruser}>Sign Up</button>
-                            <button onClick={signInWithGoogle}>Google Signin</button>
+                            <div className="loginLinkText">
+                                already have an account,{" "}
+                                <span
+                                    className="loginLink"
+                                    onClick={navigateToLogin}
+                                >
+                                    login here
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="right"></div>
+                </div>
+            </div>
+            
+        <div className={styles.yellow}>
+
+        <input type="text" placeholder="Name" id="name" />
+            <input
+                type="email"
+                placeholder="Email"
+                id="email"
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                id="password"
+            />
+            <button onClick={registeruser}>Sign Up</button>
+            <button onClick={signInWithGoogle}>Google Signin</button>
         </div>
     </div>
   )
