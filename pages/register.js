@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./../styles/register.module.scss";
 
-import googleSVG from "./../assets/download.png";
+import googleSVG from "./download.png";
 
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword} from "firebase/auth";
