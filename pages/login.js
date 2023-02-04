@@ -19,7 +19,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-// const db = getFirestore(app);
+const db = getFirestore(app);
 
 function login() {
   function userlogin(event) {
@@ -32,7 +32,8 @@ function login() {
   const loginWithEmailAndPassword = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert("sign in successfull ...");
+      // alert("sign in successfull ...");
+      navigateToHome();
     } catch(err) {
       console.log(err);
       alert(err.message)
@@ -41,6 +42,10 @@ function login() {
   function navigateToRegister() {
     window.location.href = "/register";
   }
+  const navigateToHome = () => {
+    window.location.href = "/home";
+};
+
   return (
     <div className={styles.login}>
         <div className={styles.login}>

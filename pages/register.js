@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./../styles/register.module.scss";
 
-import googleSVG from "./google.png";
+import googleSVG from "./../assets/images.png";
 
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword} from "firebase/auth";
@@ -23,7 +23,7 @@ const db = getFirestore(app);
 
 const register = () => {
     function registeruser(event) {
-        // event.preventDefault();
+        event.preventDefault();
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
         var name = document.getElementById("name").value;
@@ -31,6 +31,26 @@ const register = () => {
         console.log(email, password, name);
         registerWithEmailAndPassword(name, email, password);
     }
+    // const registerWithEmailAndPassword = async (name, email, password) => {
+    //     console.log(auth, email, password);
+    //     try {
+    //       const res = await createUserWithEmailAndPassword(auth, email, password);
+    //       const user = res.user;
+    //       await addDoc(collection(db, "users"), {
+    //         uid: user.uid,
+    //         name,
+    //         authProvider: "local",
+    //         email,
+    //       });
+    //       navigateToLogin();
+    //     //   console.log("did it reach here or not");
+    //     //   window.location.href = "http://localhost:3000/home";
+    //     } catch (err) {
+    //       console.error(err);
+    //       alert(err.message);
+    //     }
+    //   };
+
     const registerWithEmailAndPassword = async (name, email, password) => {
         try {
           const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -41,11 +61,13 @@ const register = () => {
             authProvider: "local",
             email,
           });
+          navigateToHome();
         } catch (err) {
           console.error(err);
           alert(err.message);
         }
       };
+
     const googleProvider = new GoogleAuthProvider();
     const signInWithGoogle = async () => {
     try {
@@ -61,6 +83,8 @@ const register = () => {
             email: user.email,
         });
         }
+        navigateToHome();
+        // console.log("your google auth is successful");
     } catch (err) {
         console.error(err);
         alert(err.message);
@@ -69,6 +93,10 @@ const register = () => {
     const navigateToLogin = () => {
         window.location.href = "/login";
     };
+    const navigateToHome = () => {
+        window.location.href = "/home";
+    };
+
   return (
     <div className={styles.register}>
           <div className={styles.register}>
@@ -76,7 +104,7 @@ const register = () => {
                     <div className= {styles.left}>
                         <form>
                             <h1>Create Account</h1>
-                            <div className= {styles.googleBtn}>
+                            <div className= {styles.googleBtn} onClick={signInWithGoogle}>
                                 <div className= {styles.googleIconWrapper}>
                                     <img
                                         className= {styles.googleIcon}
