@@ -14,6 +14,7 @@
     "axios": "^1.3.2",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "firebase": "^9.17.1",
     "natural": "^6.1.4",
     "next": "13.1.6",
     "node-sass": "^7.0.3",
