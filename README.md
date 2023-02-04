@@ -20,7 +20,7 @@ git clone https://github.com/Dv04/HackInfinity.git && cd HackInfinity
 Install the dependencies
 
 ```bash
-node install
+npm install
 ```
 
 ## Usage
