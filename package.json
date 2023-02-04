@@ -20,9 +20,9 @@
     "node-sass": "^7.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sentiment": "^5.0.2",
+    "sass": "^1.58.0",
     "spelling-corrector": "^3.0.0",
-    "stopword": "^2.0.6",
-
-    "sass": "^1.58.0"
+    "stopword": "^2.0.6"
   }
 }

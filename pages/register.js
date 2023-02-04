@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./../styles/register.module.scss";
 
-// import googleSVG from "./download.png";
+import googleSVG from "./google.png";
 
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword} from "firebase/auth";
@@ -66,22 +66,25 @@ const register = () => {
         alert(err.message);
     }
     };
+    const navigateToLogin = () => {
+        window.location.href = "/login";
+    };
   return (
     <div className={styles.register}>
-           <div className="register">
-                <div className="box">
-                    <div className="left">
+          <div className={styles.register}>
+                <div className={styles.box}>
+                    <div className= {styles.left}>
                         <form>
                             <h1>Create Account</h1>
-                            <div className="google-btn">
-                                <div className="google-icon-wrapper">
+                            <div className= {styles.googleBtn}>
+                                <div className= {styles.googleIconWrapper}>
                                     <img
-                                        className="google-icon"
+                                        className= {styles.googleIcon}
                                         src={googleSVG}
                                         alt="google svg"
                                     />
                                 </div>
-                                <p className="btn-text">
+                                <p className= {styles.btnText}>
                                     <b>Sign in with google</b>
                                 </p>
                             </div>
@@ -100,10 +103,10 @@ const register = () => {
                                 id="password"
                             />
                             <button onClick={registeruser}>Sign Up</button>
-                            <div className="loginLinkText">
+                            <div className= {styles.loginLinkText}>
                                 already have an account,{" "}
                                 <span
-                                    className="loginLink"
+                                    className= {styles.loginLink}
                                     onClick={navigateToLogin}
                                 >
                                     login here
@@ -111,11 +114,12 @@ const register = () => {
                             </div>
                         </form>
                     </div>
-                    <div className="right"></div>
+                    <div className= {styles.right}>
+                    </div>
                 </div>
             </div>
             
-        <div className={styles.yellow}>
+        {/* <div className={styles.yellow}>
 
         <input type="text" placeholder="Name" id="name" />
             <input
@@ -130,7 +134,7 @@ const register = () => {
             />
             <button onClick={registeruser}>Sign Up</button>
             <button onClick={signInWithGoogle}>Google Signin</button>
-        </div>
+        </div> */}
     </div>
   )
 }
