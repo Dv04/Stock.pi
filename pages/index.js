@@ -30,10 +30,9 @@ export default function Home() {
                         <h1>Stocker.PI</h1>
                     </div>
                     <div className={styles.navbar__links}>
-                        <a href="#">Home</a>
-                        <a href="#">About</a>
-                        <a href="#">Contact</a>
-                        <a href="#">Login</a>
+                        <a href="Dashboard">Dashboard</a>
+                        <a href="about">About</a>
+                        <a href="login">Login</a>
                     </div>
                 </nav>
                 <div className={styles.hero}>
@@ -53,8 +52,10 @@ export default function Home() {
                             color: "white",
                             border: "none",
                         }}
-                        onClick={() => (window.location.href = "/howitworks")}
-                    >
+                        onClick={() => {
+                            console.log(window.location.href);
+                            window.location.href = "https://github.com/Dv04/HackInfinity/blob/b7fd7a7a5f42f955333a6d9d9c46362a46d56527/pages/Stock.pdf";
+                        }}                    >
                         How it Works
                     </button>
                     <button onClick={() => (window.location.href = "/login")}>
