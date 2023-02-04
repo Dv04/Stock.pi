@@ -46,7 +46,7 @@ localhost:3000
 -   [apos-to-lex-form](https://www.npmjs.com/package/apos-to-lex-form)
 -   [axios](https://www.npmjs.com/package/axios)
 -   [Spell Corrector](https://www.npmjs.com/package/spellcorrector)
--   [NewsApi] (https://newsapi.org/)
+-   [News Api](https://newsapi.org/)
 
 ## Contributors
 
