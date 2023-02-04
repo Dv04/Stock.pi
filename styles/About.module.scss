@@ -51,4 +51,31 @@
     background-color: white;
     height: 100vh;
     color: black;
+
+    .parentDiv {
+        margin-left: 70px;
+        font-family: 'arial';
+        margin-top: 50px;
+        
+        .aboutUsTitle{
+            font-size: 50px;
+            font-weight: 900;
+            color: indigo;
+            margin-bottom: 30px;
+        }
+        .paragraph {
+            width: 900px;
+            color: #7e8183;
+            font-size: 18px;
+            line-height: 25.5px;
+        }
+        .button {
+            margin-top: 20px;
+            font-size: 24px;
+            background-color: orange;
+            border: 1px solid orange;
+            border-radius: 50px;
+            padding: 10px;
+        }
+    }
 }
