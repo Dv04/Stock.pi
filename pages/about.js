@@ -22,18 +22,10 @@ const about = () => {
                     <a href="login">Login</a>
                 </div>
             </nav>
-            <div>
-                <div>ABOUT US</div>
-                <div><p>this is the dummy text which has no meaning and is just written just for fun and means nothing to anyone and anyting so have fun and do enjoy the process of learning this is the dummy text which has no meaning and is just written just for fun and means nothing to anyone and anyting so have fun and do enjoy the process of learning this is the dummy text which has no meaning and is just written just for fun and means nothing to anyone and anyting so have fun and do enjoy the process of learning this is the dummy text which has no meaning and is just written just for fun and means nothing to anyone and anyting so have fun and do enjoy the process of learning</p></div>
-                <button>Learn More </button>
-            </div>
-            <div>
-                <Image
-                    src="/about.png"
-                    alt="about us"
-                width={190}
-                height={190}
-                />
+            <div className={styles.parentDiv}>
+                <div className={styles.aboutUsTitle}>ABOUT US</div>
+                <div className={styles.paragraph}><p>this is the dummy text which has no meaning and is just written just for fun and means nothing to anyone and anyting so have fun and do enjoy the process of learning this is the dummy text which has no meaning and is just written just for fun and means nothing to anyone and anyting so have fun and do enjoy the process of learning this is the dummy text which has no meaning and is just written just for fun and means nothing to anyone and anyting so have fun and do enjoy the process of learning this is the dummy text which has no meaning and is just written just for fun and means nothing to anyone and anyting so have fun and do enjoy the process of learning</p></div>
+                <button className={styles.button}>Learn More </button>
             </div>
         </div>)
 }
