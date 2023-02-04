@@ -22,7 +22,7 @@
     "react-dom": "18.2.0",
 
     "spelling-corrector": "^3.0.0",
-    "stopword": "^2.0.6"
+    "stopword": "^2.0.6",
 
     "sass": "^1.58.0"
 
