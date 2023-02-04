@@ -11,6 +11,7 @@ A Chatbot which helps user make better decision regarding their stocks using mar
 -   [Installation](#installation)
 -   [Usage](#usage)
 -   [Dependencies](#dependencies)
+-   [Features](#features)
 -   [Contributors](#contributors)
 
 ## Installation
@@ -35,7 +36,7 @@ Run the server
 npm run dev
 ```
 
-and navigate to localhost:3000 (type the following in yout browser)
+and navigate to localhost:3000 (type the following in your browser)
 
 ```bash
 localhost:3000
@@ -52,12 +53,29 @@ localhost:3000
 -   [Spell Corrector](https://www.npmjs.com/package/spellcorrector)
 -   [News Api](https://newsapi.org/)
 
+## Features
+
+-   Login and Signup
+-   Authentication using Firebase
+-   Data scrapping
+
+    -   news scrapping
+
+-   Algorithm which takes input the data scrapped and predicts the future of the stock in a range
+
+    - positive review
+    - negative review
+    - neutral review
+    
+-   Storing the previous searched stock's results.
+
+
 ## Contributors
 
 -   [Dv04](https://github.com/Dv04/)
 -   [NotTheRightGuy](https://github.com/nottherightguy/)
 -   [Namish73](https://github.com/naimish73)
--   [Kumail](https://github.com/KUMAIL261103)
+-   [Kumail261103](https://github.com/KUMAIL261103)
 
 ## License
 
