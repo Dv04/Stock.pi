@@ -29,7 +29,7 @@ const sentimentAnalysis = (text) => {
 
 export default function handler(req, res) {
     const { text, strength } = req.body;
-    const site = `https://newsapi.org/v2/everything?q=${text}&from=2023-01-03&sortBy=publishedAt&apiKey=${apiKey}`;
+    const site = `https://newsapi.org/v2/everything?q=${text}&from=2023-01-10&sortBy=publishedAt&apiKey=${apiKey}`;
 
     fetch(site)
         .then((response) => response.json())
