@@ -1,5 +1,7 @@
 # Stock.Pi
 
+![Stock.pi Logo](/public/logo.png)
+
 > A Market Sentiment Analysis Tool for Stock Market Prediction and Analysis
 
 A Chatbot which helps user make better decision regarding their stocks using market sentiment analysis created by team _GameChanger_ for HackInfinity 2023
