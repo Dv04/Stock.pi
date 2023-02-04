@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from "./../styles/login.module.scss";
 
+import googleSVG from "./google.png";
+
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import { getFirestore} from "firebase/firestore";
@@ -35,7 +37,10 @@ function login() {
       console.log(err);
       alert(err.message)
     }
-}
+  }
+  function navigateToRegister() {
+    window.location.href = "/register";
+  }
   return (
     <div className={styles.login}>
         <div className={styles.login}>
