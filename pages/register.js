@@ -61,17 +61,14 @@ const register = () => {
             authProvider: "local",
             email,
           });
-          navigateToHome();
-          onClick={
-            () => {
-                window.location.href
-            }
-          }
+        //   navigateToHome();
+        //   onClick={() => {}} this is not working (the line below)
+          window.location.href = "/home";
         } catch (err) {
           console.error(err);
           alert(err.message);
         }
-      };
+    };
 
     const googleProvider = new GoogleAuthProvider();
     const signInWithGoogle = async () => {
@@ -95,9 +92,11 @@ const register = () => {
         alert(err.message);
     }
     };
+
     const navigateToLogin = () => {
         window.location.href = "/login";
     };
+    
     const navigateToHome = () => {
         window.location.href = "/home";
     };

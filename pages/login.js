@@ -4,8 +4,8 @@ import styles from "./../styles/login.module.scss";
 import googleSVG from "./google.png";
 
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
-import { getFirestore} from "firebase/firestore";
+import { GoogleAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail} from "firebase/auth";
+import { getFirestore, query, getDocs, collection, where, addDoc} from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDkvTzG6YYyApb5IDedlsknT-AghdopFDk",
@@ -21,7 +21,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-function login() {
+const login = () => {
   function userlogin(event) {
     event.preventDefault();
     var email = document.getElementById("email").value;
@@ -29,6 +29,7 @@ function login() {
     
     loginWithEmailAndPassword(email, password);
   }
+
   const loginWithEmailAndPassword = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
@@ -39,9 +40,45 @@ function login() {
       alert(err.message)
     }
   }
+
+  const sendPasswordReset = async () => {
+    var email = document.getElementById("email").value;
+    try {
+      await sendPasswordResetEmail(auth, email);
+      alert("Password reset link sent!");
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
+  };
+
+  const googleProvider = new GoogleAuthProvider();
+    const signInWithGoogle = async () => {
+    try {
+        const res = await signInWithPopup(auth, googleProvider);
+        const user = res.user;
+        const q = query(collection(db, "users"), where("uid", "==", user.uid));
+        const docs = await getDocs(q);
+        if (docs.docs.length === 0) {
+        await addDoc(collection(db, "users"), {
+            uid: user.uid,
+            name: user.displayName,
+            authProvider: "google",
+            email: user.email,
+        });
+        }
+        navigateToHome();
+        // console.log("your google auth is successful");
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+    };
+
   function navigateToRegister() {
     window.location.href = "/register";
   }
+
   const navigateToHome = () => {
     window.location.href = "/home";
 };
@@ -61,7 +98,7 @@ function login() {
                                         alt="google svg"
                                     />
                                 </div>
-                                <p className={styles.btnText}>
+                                <p className={styles.btnText} onClick={signInWithGoogle}>
                                     <b>Sign in with google</b>
                                 </p>
                             </div>
@@ -76,7 +113,7 @@ function login() {
                                 placeholder="Password"
                                 id="password"
                             />
-                            <a href="www.google.com">Forgot your password?</a>
+                            <u onClick={sendPasswordReset} >Forgot your password?</u>
                             <button onClick={userlogin}>Sign In</button>
                             <div className={styles.registerLinkText}>
                                 do not have an account,{" "}
