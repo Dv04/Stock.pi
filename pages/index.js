@@ -15,10 +15,7 @@ export default function Home() {
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
-                <link
-                    rel="icon"
-                    href="/icon-favicon/android-chrome-192x192.png"
-                />
+                <link rel="icon" href="/android-chrome-192x192.png" />
             </Head>
             <main>
                 <div className={styles.background}></div>
