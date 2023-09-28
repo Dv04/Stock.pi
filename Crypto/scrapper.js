@@ -1,5 +1,10 @@
-import axios from "axios";
-import pkg from "nodeplotlib";
+const axios = require("axios");
+const pkg = require("nodeplotlib");
+const apiKey = "1c380413dd434735808bf844b000239f";
+const natural = require("natural");
+const SpellCorrector = require("spelling-corrector");
+const aposToLexForm = require("apos-to-lex-form");
+const SW = require("stopword");
 
 const { plot, Plot } = pkg;
 
@@ -31,6 +36,7 @@ function plotting(text) {
         let parser2 = jsonh.data[i].name;
         if (text.includes(parseing) || text.includes(parser2)) {
           console.log("Yes, the text contains the word " + parseing);
+          console.log(Res(parseing));
           let xi = jsonh.data[i].quote.USD;
           let x2 = ((xi.price) + (xi.price * xi.percent_change_1h) / 100);
           let x3 = ((xi.price) + (xi.price * xi.percent_change_24h) / 100);
@@ -54,5 +60,49 @@ function plotting(text) {
     }
   })
 };
+
+const spellCorrector = new SpellCorrector();
+spellCorrector.loadDictionary();
+
+const sentimentAnalysis = (text) => {
+  const lexedText = aposToLexForm(text);
+  const casedReview = lexedText.toLowerCase();
+  const alphaOnlyReview = casedReview.replace(/[^a-zA-Z\s]+/g, "");
+
+  const { WordTokenizer } = natural;
+  const tokenizer = new WordTokenizer();
+  const tokenizedReview = tokenizer.tokenize(alphaOnlyReview);
+
+  tokenizedReview.forEach((word, index) => {
+    tokenizedReview[index] = spellCorrector.correct(word);
+  });
+
+  const filteredReview = SW.removeStopwords(tokenizedReview);
+  const { SentimentAnalyzer, PorterStemmer } = natural;
+  const analyzer = new SentimentAnalyzer("English", PorterStemmer, "afinn");
+  const analysis = analyzer.getSentiment(filteredReview);
+  return analysis;
+};
+
+function Res(testing) {
+  const { text } = testing;
+  const site = `https://newsapi.org/v2/everything?q=${text}&from=2023-01-12&sortBy=publishedAt&apiKey=${apiKey}`;
+  const strength = 0.35;
+  fetch(site)
+    .then((response) => response.json())
+    .then((data) => {
+      let overSentiment = 0;
+      for (let i = 0; i < strength * data.articles.length; i++) {
+        const currSentiment = sentimentAnalysis(data.articles[i].title);
+        if (currSentiment) {
+          overSentiment += currSentiment;
+        }
+      }
+      // res.status(200).json({
+      //   sentiment: overSentiment,
+      // });
+    });
+}
+
 
 plotting("Hello world, welcome to the Bitcoin");
