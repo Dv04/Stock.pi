@@ -96,9 +96,5 @@ See also the list of [contributors](https://github.com/Dv04/Stock.pi/graphs/cont
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
-
-
-## License
-
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 This code has been released under the [MIT](https://opensource.org/licenses/MIT) License.
